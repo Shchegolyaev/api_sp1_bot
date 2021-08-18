@@ -31,7 +31,8 @@ def parse_homework_status(homework):
             verdict = 'К сожалению, в работе нашлись ошибки.'
         else:
             verdict = 'Ревьюеру всё понравилось, работа зачтена!'
-    return f'У вас проверили работу "{homework_name}"!\n\n{verdict}'
+        return f'У вас проверили работу "{homework_name}"!\n\n{verdict}'
+    return None
 
 
 def get_homeworks(current_timestamp):
@@ -45,7 +46,8 @@ def get_homeworks(current_timestamp):
 def send_message(message):
     if message is not None:
         logging.info('Отправляю сообщение')
-    return bot.send_message(CHAT_ID, message)
+        return bot.send_message(CHAT_ID, message)
+    return None
 
 
 def main():
