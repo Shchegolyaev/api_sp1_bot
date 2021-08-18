@@ -24,7 +24,7 @@ bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
 
 def parse_homework_status(homework):
-    if len(homework["homeworks"]) != 0:
+    if homework["homeworks"]:
         homework_name = homework["homeworks"][0]["homework_name"]
         status = homework["homeworks"][0]["status"]
         if status == 'rejected':
