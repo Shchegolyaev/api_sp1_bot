@@ -24,9 +24,9 @@ bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
 
 def parse_homework_status(homework):
-    if homework["homeworks"]:
-        homework_name = homework["homeworks"][0]["homework_name"]
-        status = homework["homeworks"][0]["status"]
+    if len(homework) != 0:
+        homework_name = homework["homework_name"]
+        status = homework["status"]
         if status == 'rejected':
             verdict = 'К сожалению, в работе нашлись ошибки.'
         else:
@@ -40,6 +40,8 @@ def get_homeworks(current_timestamp):
     headers = {'Authorization': f'OAuth {PRAKTIKUM_TOKEN}'}
     payload = {'from_date': current_timestamp}
     homework_statuses = requests.get(url, headers=headers, params=payload)
+    if len(homework_statuses.json()["homeworks"]) != 0:
+        return homework_statuses.json()["homeworks"][0]
     return homework_statuses.json()
 
 
@@ -52,7 +54,7 @@ def send_message(message):
 
 def main():
     logging.debug('Запуск')
-    current_timestamp = int(time.time() - 60 * 60 * 24 * 7)
+    current_timestamp = int(time.time() - 60 * 60 * 24 * 24)
 
     while True:
         try:
