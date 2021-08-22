@@ -69,7 +69,7 @@ def main():
             send_message(
                 parse_homework_status(
                     get_homeworks(current_timestamp)))
-            time.sleep(5 * 60)
+            time.sleep(21 * 60)
 
         except Exception as e:
             logger.error(f'Ошибка: {e}')
