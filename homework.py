@@ -23,7 +23,7 @@ load_dotenv()
 PRAKTIKUM_TOKEN = os.getenv('PRAKTIKUM_TOKEN')
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
-URL_PRAKTIKUM_API = os.getenv('URL_PRAKTIKUM_API')
+URL_PRAKTIKUM_API = 'https://praktikum.yandex.ru/api/'
 
 bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
