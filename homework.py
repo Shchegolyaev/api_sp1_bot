@@ -33,7 +33,7 @@ def parse_homework_status(homework):
     status = homework.get("status")
     if homework_name is None:
         return homework_name
-    if status not in ('approved', 'rejected'):
+    if status not in ('approved', 'rejected', 'reviewing'):
         return None
     elif status == 'rejected':
         verdict = 'К сожалению, в работе нашлись ошибки.'
@@ -64,7 +64,7 @@ def send_message(message):
 
 def main():
     logger.debug('Starting bot')
-    current_timestamp = int(time.time()) - 60 * 25
+    current_timestamp = int(time.time()) - 60 * 20
 
     while True:
         try:
