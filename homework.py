@@ -53,6 +53,7 @@ def get_homeworks(current_timestamp):
     except Exception as error:
         logger.error(error, exc_info=True)
     if len(homework_statuses.json()["homeworks"]) != 0:
+        current_timestamp = int(time.time())
         return homework_statuses.json()["homeworks"][0]
     return homework_statuses.json()
 
@@ -73,11 +74,11 @@ def main():
             send_message(
                 parse_homework_status(
                     get_homeworks(current_timestamp)))
-            time.sleep(21 * 60)
+            time.sleep(20 * 60)
 
         except Exception as e:
             logger.error(f'Ошибка: {e}')
-            time.sleep(5)
+            time.sleep(21 * 60)
             return bot.send_message(CHAT_ID, f'У нас проблемы: {e}')
 
 
